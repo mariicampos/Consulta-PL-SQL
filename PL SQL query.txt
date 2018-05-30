@@ -1,0 +1,7 @@
+SELECT Clientes.Nome, Clientes.Cnpj, Pedidos.Numero, Pedidos.Data, (CASE
+								    WHEN Pedidos.Valor is  NULL THEN '0'
+								    ELSE Pedidos.Valor
+								    END) as Pedidos_Valor
+FROM Clientes
+OUTER LEFT JOIN Pedidos ON Clientes.ClienteId = Pedidos.ClienteId
+ORDER BY Clientes.Nome ASC, Pedidos.Data DESC;
